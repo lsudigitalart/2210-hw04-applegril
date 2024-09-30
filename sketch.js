@@ -2,6 +2,7 @@ var x =10
 var y = 10
 var d = 10
 var safe
+var colorCheck;
 
 
 function setup() {
@@ -14,22 +15,11 @@ function setup() {
 
 function draw(){
     background("black");
-    ellipse(x, y, d);
-    if (keyIsPressed){
-        if (keyCode == LEFT_ARROW){
-            x--;
-        } else if (keyCode == RIGHT_ARROW){
-            x++;
-        }
-        if(keyCode == UP_ARROW){
-            y--;
-        } else if (keyCode == DOWN_ARROW){
-            y++;
-        }
-		}
+    
+
 	fill("white")
-	text(mouseX, 10, 10);
-  text(mouseY, 10, 20);
+	// text(mouseX, 10, 10);
+  // text(mouseY, 10, 20);
 	
 	stroke(255);
 	line(0, 15, 45, 15);
@@ -65,6 +55,45 @@ function draw(){
 	line(122, 135, 142, 135);
 	line(106, 165, 126, 165);
 	line(70, 180, 50, 180);
+
+
+	if (keyIsPressed){
+		if (keyCode == LEFT_ARROW){
+				colorCheck = get(x, y);
+				print(colorCheck);
+				if(colorCheck[0] == 0) {
+					x--;
+				} else {
+					x+=3;
+				}
+		}
+		
+		if (keyCode == RIGHT_ARROW){
+				colorCheck = get(x, y);
+				print(colorCheck);
+				if(colorCheck[0] == 0) {
+					x++;
+				}
+
+		}
+		if(keyCode == UP_ARROW){
+				colorCheck = get(x, y);
+				print(colorCheck);
+				if(colorCheck[0] == 0) {
+					y--;
+				}
+		}
+		
+		if (keyCode == DOWN_ARROW){
+				colorCheck = get(x, y);
+				print(colorCheck);
+				if(colorCheck[0] == 0) {
+					y++;
+				}
+		}
+}
+
+ellipse(x, y, d);
 
 
 }
