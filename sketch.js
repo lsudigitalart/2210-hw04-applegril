@@ -1,7 +1,19 @@
 var x =10
 var y = 10
 var d = 10
+var move = 5
+let lineX = 0
+let lineY = 0
+let lineWidth = 1
+let lineHeight = 1
+var testX = 20
+var testY = 20
+var testWidth = 20
+var testHeight = 20
 var safe
+var colorCheck;
+
+
 
 
 function setup() {
@@ -15,6 +27,10 @@ function setup() {
 function draw(){
     background("black");
     ellipse(x, y, d);
+
+
+
+
     if (keyIsPressed){
         if (keyCode == LEFT_ARROW){
             x--;
@@ -27,11 +43,28 @@ function draw(){
             y++;
         }
 		}
+
+if(x < 0){
+    x = x + move
+} 
+if(x > width){
+    x = x - move
+} 
+if(y < 0){
+    y = y + move
+} 
+if(y > width){
+    y = y - move
+} 
+
+
+
+
 	fill("white")
-	text(mouseX, 10, 10);
-  text(mouseY, 10, 20);
+// 	text(mouseX, 10, 10);
+//   text(mouseY, 10, 20);
 	
-	stroke(255);
+	stroke("white");
 	line(0, 15, 45, 15);
 	line(23, 30, 170, 30);
 	line(50, 45, 200, 45);
@@ -60,14 +93,56 @@ function draw(){
 	line(85, 135, 85, 150);
 	line(150, 165, 150, 200);
 	line(71, 165, 71, 180)
+
 	
 	stroke(0);
 	line(122, 135, 142, 135);
 	line(106, 165, 126, 165);
 	line(70, 180, 50, 180);
 
+    if (keyIsPressed){
+		if (keyCode == LEFT_ARROW){
+				colorCheck = get(x, y);
+				print(colorCheck);
+				if(colorCheck[0] == "white") {
+                    x++;
+
+				} 
+
+		}
+		
+		if (keyCode == RIGHT_ARROW){
+				colorCheck = get(x, y);
+				print(colorCheck);
+				if(colorCheck[0] == 0) {
+					x--;
+				}
+
+		}
+		if(keyCode == UP_ARROW){
+				colorCheck = get(x, y);
+				print(colorCheck);
+				if(colorCheck[0] == 0) {
+					y--;
+				}
+		}
+		
+		if (keyCode == DOWN_ARROW){
+				colorCheck = get(x, y);
+				print(colorCheck);
+				if(colorCheck[0] == 0) {
+					y++;
+				}
+		}
+   
+}
+
+ellipse(x, y, d);
+
+
 
 }
+//i tried only the walls work :(
 
 
 //function keyPressed() {
